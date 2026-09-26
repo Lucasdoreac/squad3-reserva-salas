@@ -1,0 +1,82 @@
+{
+  "projeto": {
+    "nome": "Squad 3 - Sistema de reserva de salas",
+    "documentador": "Lucas Dórea (ludoc)",
+    "estado": "proposta inicial para revisão da squad",
+    "objetivo": "Consultar disponibilidade, solicitar e cancelar reservas de salas, com acompanhamento administrativo.",
+    "stack_alvo": {
+      "frontend": "React",
+      "backend": "Java + Spring Boot API",
+      "banco": "PostgreSQL",
+      "seguranca": "Spring Security",
+      "containerizacao": "Docker",
+      "controle_versao": "GitHub"
+    },
+    "arquitetura_inicial": "monolito modular; contrato REST/OpenAPI versionado; PostgreSQL como fonte de verdade",
+    "mvp": [
+      "autenticação e autorização por papéis",
+      "catálogo de campus, salas e recursos",
+      "consulta de disponibilidade por intervalo",
+      "criação, acompanhamento e cancelamento de solicitações",
+      "fila administrativa para decisão e auditoria",
+      "proteção transacional contra reservas simultâneas conflitantes"
+    ],
+    "fora_do_mvp": [
+      "otimização automática de alocação de professores",
+      "sincronização direta entre bancos legados",
+      "integração de grade sem fonte oficial e chaves acordadas",
+      "aplicativo móvel nativo"
+    ],
+    "decisoes_pendentes": [
+      "uma ou duas etapas de aprovação",
+      "provedor de identidade e estratégia de sessão/token",
+      "fonte oficial e responsável pelo catálogo de salas",
+      "fonte do calendário acadêmico e crosswalk de códigos",
+      "políticas de antecedência, duração, cancelamento e estados que bloqueiam agenda",
+      "hospedagem, ambientes, responsáveis e política de deploy",
+      "Java LTS e versões exatas da stack"
+    ],
+    "principio_de_reaproveitamento": "Reusar regras, fluxos, evidências, cenários de teste e padrões de UX do Reservas/Alocação; reimplementar adaptadores, persistência e segurança na stack aprovada; migrar dados somente com mapeamento validado.",
+    "fontes_legadas_consultadas_para_referencia": [
+      {"repositorio": "LabTechUDF/python-services", "caminho": "src/DAL/reservation_manager.py", "uso": "cenários atuais de conflito/disponibilidade; revisar na branch-alvo antes de citar como estado publicado"},
+      {"repositorio": "LabTechUDF/python-services", "caminho": "src/SLL/offers_admin_routes.py", "uso": "fluxo administrativo de dias da oferta"},
+      {"repositorio": "LabTechUDF/shared-resources", "caminho": "internal_apis/src/DAL/models.py", "uso": "modelo legado de oferta e campo de dias"},
+      {"repositorio": "LabTechUDF/teachers-allocation", "caminho": "backend/app/models.py e backend/app/routes/routes1.py", "uso": "modelo e protótipo local de grade por curso/semestre"},
+      {"repositorio": "LabTechUDF/interfaces-usuario", "caminho": "reservas/src", "uso": "referência de fluxo e componentes React"}
+    ],
+    "alertas_de_reuso": [
+      "COD_DISC no Reservas e Disciplina.id na Alocação não são chaves equivalentes confirmadas.",
+      "A grade experimental da Alocação contém dados locais e não deve ser chamada de calendário oficial.",
+      "A checagem de disponibilidade na UI/API não substitui constraint ou transação contra concorrência no PostgreSQL."
+    ]
+  },
+  "requisitos": [
+    {"id": "RF-01", "titulo": "Autenticar usuários e autorizar papéis", "prioridade": "P0"},
+    {"id": "RF-02", "titulo": "Filtrar salas por campus, capacidade e recursos", "prioridade": "P0"},
+    {"id": "RF-03", "titulo": "Consultar disponibilidade por intervalo", "prioridade": "P0"},
+    {"id": "RF-04", "titulo": "Criar uma solicitação de reserva", "prioridade": "P0"},
+    {"id": "RF-05", "titulo": "Recusar intervalos inválidos e conflitos concorrentes", "prioridade": "P0"},
+    {"id": "RF-06", "titulo": "Acompanhar pedidos próprios e histórico", "prioridade": "P0"},
+    {"id": "RF-07", "titulo": "Cancelar pedido conforme política", "prioridade": "P0"},
+    {"id": "RF-08", "titulo": "Administrar fila e decidir pedidos", "prioridade": "P0"},
+    {"id": "RF-09", "titulo": "Auditar transições com ator e instante", "prioridade": "P0"},
+    {"id": "RF-10", "titulo": "Notificar atualizações com retentativa", "prioridade": "P1"},
+    {"id": "RF-11", "titulo": "Administrar catálogo e bloqueios institucionais", "prioridade": "P1"},
+    {"id": "RF-12", "titulo": "Integrar calendário por contrato autenticado", "prioridade": "P1; depende de fonte/crosswalk"}
+  ],
+  "incrementos": [
+    "0-alinhamento-de-produto-e-fontes",
+    "1-fundacao-java-react-postgresql-docker-ci",
+    "2-catalogo-e-disponibilidade",
+    "3-solicitacao-e-cancelamento",
+    "4-administracao-e-auditoria",
+    "5-migracao-ensaio-e-integracao"
+  ],
+  "arquivos_do_pacote": [
+    "docs/01-documento-base.md",
+    "docs/02-backlog-inicial.md",
+    "docs/03-checklist-de-inicio.md",
+    "docs/projeto.json",
+    "memoria/"
+  ]
+}
