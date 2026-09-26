@@ -9,6 +9,8 @@ Repositório greenfield da Squad 3. O produto deve permitir consultar disponibil
 3. [`docs/03-checklist-de-inicio.md`](docs/03-checklist-de-inicio.md) — prontidão para começar.
 4. [`memoria/README.md`](memoria/README.md) — como manter o contexto deste projeto limpo.
 5. [`docs/design/experiencia-integrada.png`](docs/design/experiencia-integrada.png) — proposta visual; dados e sincronização são ilustrativos.
+6. [`docs/design/README.md`](docs/design/README.md) — padrões visuais/interativos extraídos da imagem.
+7. [`docs/design/tokens.css`](docs/design/tokens.css) — tokens iniciais prontos para o frontend.
 
 ## Estrutura
 

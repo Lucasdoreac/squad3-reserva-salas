@@ -150,7 +150,9 @@ erDiagram
 7. Fila administrativa com filtros, decisão e histórico.
 8. Cadastro administrativo de salas e bloqueios institucionais.
 
-O mockup de horário acadêmico mostra como trazer para um produto só: navegação e fluxo de pedido do Reservas, mais a grade semanal e o azul-marinho característico da Alocação. Ele é referência visual, não evidência de sincronização funcional. A proposta está em [`../experiencia-integrada-reservas-alocacao.png`](../experiencia-integrada-reservas-alocacao.png) e no SVG editável adjacente.
+O mockup de horário acadêmico mostra como trazer para um produto só: navegação e fluxo de pedido do Reservas, mais a grade semanal e o azul-marinho característico da Alocação. Ele é referência visual, não evidência de sincronização funcional. A proposta está em [`design/experiencia-integrada.png`](design/experiencia-integrada.png) e no SVG editável adjacente.
+
+Os padrões reutilizáveis extraídos desse mockup (shell de navegação, cabeçalho, filtros, grade, estados, acessibilidade e tokens iniciais) estão em [`design/README.md`](design/README.md) e [`design/tokens.css`](design/tokens.css).
 
 Princípios visuais: identidade UDF discreta, hierarquia clara, poucos campos por etapa, estado sempre visível, cores com significado consistente e grade legível em largura reduzida. Validar com usuários antes de transformar o mockup em tela final.
 
